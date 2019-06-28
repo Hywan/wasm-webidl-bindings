@@ -3,6 +3,7 @@ use crate::text;
 use id_arena::{Arena, Id};
 use std::borrow::Cow;
 use std::collections::HashMap;
+use std::slice;
 
 #[derive(Clone, Debug, Default)]
 pub struct WebidlBindings {
@@ -270,6 +271,10 @@ impl Binds {
         self.indices.push(id);
 
         id
+    }
+
+    pub fn iter(&self) -> slice::Iter<Id<Bind>> {
+        self.indices.iter()
     }
 }
 
